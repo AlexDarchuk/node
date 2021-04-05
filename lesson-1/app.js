@@ -3,10 +3,8 @@ const path = require('path');
 
 // const s = path.join(__dirname, 'netflix', 'page.txt');
 
-
 // const filePath = __dirname + '/dir/file.txt';
 const fileNet = path.join(__dirname, 'netflix', 'page.txt');
-
 
 // зчитуєм файл
 fs.readFile(fileNet, (err, data) => {
@@ -15,7 +13,7 @@ fs.readFile(fileNet, (err, data) => {
         return;
     }
     console.log(data.toString());
-})
+});
 
 // fs.rename(filePath, `${fileNet}/page.txt`, (err) => {
 //     if(err) {
@@ -39,7 +37,7 @@ fs.readFile(fileNet, (err, data) => {
 // fs.appendFile(filePath, 'Hello Alex', (err) => {
 //     if (err) {
 //         console.log(err);
-//     } 
+//     }
 // });
 
 // fs.mkdir(`${__dirname}/netflix`, {recursive: true}, (err) => {

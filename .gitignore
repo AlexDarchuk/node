@@ -147,3 +147,4 @@ $RECYCLE.BIN/
 .idea
 # End of https://www.toptal.com/developers/gitignore/api/windows,node
 package-lock.json
+.eslintrc.js

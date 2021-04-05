@@ -21,32 +21,32 @@ readUsers();
 
 const app = express();
 
-app.use(express.json());  // для роботи з json і не тільки
-app.use(express.urlencoded({extended: true}));
+app.use(express.json()); // для роботи з json і не тільки
+app.use(express.urlencoded({ extended: true }));
 
 app.use(express.static(path.join(__dirname, 'static')));
 
-app.set('view engine', '.hbs');  //який двигун для відображення використовувати
+app.set('view engine', '.hbs'); // який двигун для відображення використовувати
 app.engine('.hbs', expressHbs({
-    defaultLayout: false     //як працювати коли зустрінеться хбс
+    defaultLayout: false // як працювати коли зустрінеться хбс
 }));
 
-app.set('views', path.join(__dirname, 'static'));    //де лежать вюшки
+app.set('views', path.join(__dirname, 'static')); // де лежать вюшки
 
-//AllUsers------------------------------------
+// AllUsers------------------------------------
 app.get('/users', ((req, res) => {
-    res.render('users', { users });//перший параметр з якої папкирендерим
+    res.render('users', { users });// перший параметр з якої папкирендерим
 }));
-//AllUsers----------------------------------------
+// AllUsers----------------------------------------
 
-//User-------------------------------------------
+// User-------------------------------------------
 app.get('/users/:userId', (req, res) => {
     const { userId } = req.params;
     res.render('user', { user: users[userId] });
 });
-//User-------------------------------------------
+// User-------------------------------------------
 
-//Registration----------------------------------
+// Registration----------------------------------
 
 app.get('/registration', (req, res) => {
     res.render('registration', { users });
@@ -66,7 +66,7 @@ app.post('/registration', (req, res) => {
         res.redirect('/users');
     });
 });
-//Registration---------------------------------
+// Registration---------------------------------
 
 // Login---------------------------------------
 app.get('/login', (req, res) => {
@@ -81,16 +81,16 @@ app.post('/login', (req, res) => {
     }
     res.redirect('/registration');
 });
-//Login-----------------------------------------
+// Login-----------------------------------------
 
-//Error---------------------------------------
+// Error---------------------------------------
 app.get('/error', (req, res) => {
-    res.render('error')
-})
-//Error---------------------
+    res.render('error');
+});
+// Error---------------------
 
 app.listen(PORT, () => {
     console.log(`App listen ${PORT}`);
 });
 
-//npm i express-handlebars
+// npm i express-handlebars

@@ -9,7 +9,6 @@ module.exports = {
             const users = await userService.findUsers();
 
             res.status(errorCodes.OK).json(users);
-
         } catch (e) {
             res.status(errorCodes.BAD_REQUEST).json(e.message);
         }
@@ -17,11 +16,10 @@ module.exports = {
 
     getOneUser: async (req, res) => {
         try {
-            const { userId } =req.params;
+            const { userId } = req.params;
             const user = await userService.findUserById(userId);
 
             res.status(errorCodes.OK).json(user);
-
         } catch (e) {
             res.status(errorCodes.BAD_REQUEST).join(e.message);
         }
@@ -32,11 +30,9 @@ module.exports = {
             await userService.createUser(req.body);
 
             res.status(errorCodes.OK).json(errorMessage.USERS_IS_CCREATED);
-
         } catch (e) {
             res.status(errorCodes.BAD_REQUEST).join(e.message);
         }
-
     },
 
     deleteUser: async (req, res) => {
@@ -45,8 +41,7 @@ module.exports = {
 
             await userService.deleteUser(userId);
 
-            res.status(errorCodes.OK).json(errorMessage.USER_IS_DELETE)
-            
+            res.status(errorCodes.OK).json(errorMessage.USER_IS_DELETE);
         } catch (e) {
             res.status(errorCodes.BAD_REQUEST).join(e.message);
         }
