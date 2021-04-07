@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 
 const apiRouter = require('./routers/api.router');
-const { PORT } = require('./configs/config');
+const { PORT, MONGO_URL } = require('./configs/config');
 
 const app = express();
 
@@ -18,7 +18,7 @@ app.listen(PORT, () => {
 });
 
 function _connectDB() {
-    mongoose.connect('mongodb://localhost/sep-2021', { useNewUrlParser: true, useUnifiedTopology: true });
+    mongoose.connect(MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true });
 
     const { connection } = mongoose;
 

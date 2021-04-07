@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+const { dataBaseTAblesEnum: { USER } } = require('../../constants');
 
 // const carSubcheme = {
 //     model: { type: String },
@@ -31,5 +32,5 @@ userScheme.pre('find', function() {
         this.populate('userCars');
     });
 
-module.exports = model('User', userScheme);
+module.exports = model(USER, userScheme);
 // 1-назва моделькі 2-де описується
