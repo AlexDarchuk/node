@@ -3,6 +3,8 @@ const errorMessage = require('../../errors/error.messages');
 
 const { userService } = require('../../services');
 
+const { passwordHasher } = require('../../helpers');
+
 module.exports = {
     getAllUsers: async (req, res) => {
         try {
@@ -27,7 +29,11 @@ module.exports = {
 
     createUser: async (req, res) => {
         try {
-            await userService.createUser(req.body);
+            const { password } = req.body;
+
+            const hasPassword = await passwordHasher.hash(password);
+
+            await userService.createUser({ ...req.body, password: hasPassword });
 
             res.status(errorCodes.OK).json(errorMessage.USERS_IS_CCREATED);
         } catch (e) {
